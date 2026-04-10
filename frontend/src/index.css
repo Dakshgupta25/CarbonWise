@@ -1,87 +1,73 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --green-900: #173404;
-  --green-800: #27500A;
-  --green-700: #3B6D11;
-  --green-600: #639922;
-  --green-400: #97C459;
-  --green-200: #C0DD97;
-  --green-100: #EAF3DE;
-  --green-50:  #F4FAE8;
+  --bg:         #0a0f0a;
+  --bg2:        #0f1510;
+  --bg3:        #141a14;
+  --surface:    #1a211a;
+  --surface2:   #1f271f;
+  --border:     rgba(255,255,255,0.07);
+  --border2:    rgba(255,255,255,0.12);
 
-  --teal-700: #085041;
-  --teal-600: #0F6E56;
-  --teal-400: #1D9E75;
-  --teal-200: #5DCAA5;
-  --teal-100: #9FE1CB;
-  --teal-50:  #E1F5EE;
+  --green:      #4ade80;
+  --green-dim:  #22c55e;
+  --green-dark: #166534;
+  --green-glow: rgba(74,222,128,0.15);
+  --green-bg:   rgba(74,222,128,0.08);
 
-  --gray-900: #1a1a18;
-  --gray-800: #2C2C2A;
-  --gray-700: #444441;
-  --gray-600: #5F5E5A;
-  --gray-400: #888780;
-  --gray-200: #B4B2A9;
-  --gray-100: #D3D1C7;
-  --gray-50:  #F1EFE8;
+  --amber:      #fbbf24;
+  --amber-bg:   rgba(251,191,36,0.08);
+  --red:        #f87171;
+  --red-bg:     rgba(248,113,113,0.08);
+  --blue:       #60a5fa;
+  --blue-bg:    rgba(96,165,250,0.08);
+  --teal:       #2dd4bf;
 
-  --amber-600: #BA7517;
-  --amber-400: #EF9F27;
-  --amber-100: #FAC775;
-  --amber-50:  #FAEEDA;
+  --text:       #f0fdf0;
+  --text2:      #86a886;
+  --text3:      #4a6b4a;
 
-  --red-600: #A32D2D;
-  --red-400: #E24B4A;
-  --red-50:  #FCEBEB;
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'Instrument Sans', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
 
-  --bg: #f8f9f4;
-  --surface: #ffffff;
-  --border: rgba(0,0,0,0.08);
-  --text: #1a1a18;
-  --text-muted: #5F5E5A;
-  --text-hint: #888780;
-
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
-  --radius-xl: 24px;
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
 }
 
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-body);
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-button {
-  font-family: 'DM Sans', sans-serif;
-  cursor: pointer;
-}
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 99px; }
 
-input, select {
-  font-family: 'DM Sans', sans-serif;
-}
+button { font-family: var(--font-body); cursor: pointer; }
+input, select { font-family: var(--font-body); }
 
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: var(--gray-200);
-  border-radius: 99px;
-}
+/* Global animations */
+@keyframes fadeUp   { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeIn   { from { opacity:0; } to { opacity:1; } }
+@keyframes pulse    { 0%,100% { opacity:1; } 50% { opacity:0.5; } }
+@keyframes spin     { to { transform:rotate(360deg); } }
+@keyframes shimmer  { from { background-position: -200% 0; } to { background-position: 200% 0; } }
+@keyframes countUp  { from { opacity:0; transform:scale(0.8); } to { opacity:1; transform:scale(1); } }
+@keyframes barGrow  { from { width:0; } to { width:var(--w); } }
+@keyframes glow     { 0%,100% { box-shadow:0 0 20px var(--green-glow); } 50% { box-shadow:0 0 40px rgba(74,222,128,0.3); } }
 
-.mono {
-  font-family: 'DM Mono', monospace;
-}
+.fade-up { animation: fadeUp 0.5s ease both; }
+.fade-up-1 { animation: fadeUp 0.5s 0.1s ease both; }
+.fade-up-2 { animation: fadeUp 0.5s 0.2s ease both; }
+.fade-up-3 { animation: fadeUp 0.5s 0.3s ease both; }
+.fade-up-4 { animation: fadeUp 0.5s 0.4s ease both; }
