@@ -106,9 +106,24 @@ export default function Dashboard({ result, formData, onBack }) {
 
   return (
     <div>
-      <button onClick={onBack} style={{ background:'none', border:'none', color:'var(--text3)', fontSize:13, cursor:'pointer', marginBottom:'1.5rem', display:'flex', alignItems:'center', gap:6, fontFamily:'var(--font-mono)' }}>
-        ← RECALCULATE
-      </button>
+      <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:'1.5rem', flexWrap:'wrap', gap:10 }}>
+        <button onClick={onBack} style={{ background:'none', border:'none', color:'var(--text3)', fontSize:13, cursor:'pointer', display:'flex', alignItems:'center', gap:6, fontFamily:'var(--font-mono)' }}>
+          ← RECALCULATE
+        </button>
+        {result.model && (
+          <div style={{
+            display:'flex', alignItems:'center', gap:8, padding:'6px 14px',
+            borderRadius:99, fontSize:11, fontFamily:'var(--font-mono)',
+            background: result.model_info?.type==='lr' ? 'rgba(96,165,250,0.08)' : 'var(--green-bg)',
+            border: `1px solid ${result.model_info?.type==='lr' ? 'rgba(96,165,250,0.25)' : 'rgba(74,222,128,0.25)'}`,
+            color: result.model_info?.type==='lr' ? 'var(--blue)' : 'var(--green)',
+          }}>
+            <span style={{ width:6, height:6, borderRadius:'50%', background:'currentColor', display:'inline-block' }} />
+            {result.model} · {result.model_info?.features} features
+            {result.model_info?.scaled && ' · scaled'}
+          </div>
+        )}
+      </div>
 
       {/* Hero result */}
       <div className="fade-up" style={{
